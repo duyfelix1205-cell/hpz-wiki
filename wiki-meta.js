@@ -24,21 +24,31 @@ function applyTier(el,slug){var t=tier(count(slug));if(t)el.setAttribute('data-t
 var ICON='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg>';
 var T='.hpz-wiki-card[data-tier="%"],.hpz-article[data-tier="%"]';
 function t(n){return T.replace(/%/g,n)}
+function c(n){return '.hpz-wiki-card[data-tier="'+n+'"]'}
 var css='.hpz-trust{display:inline-flex;align-items:center;gap:6px;color:#3ddc84;font-weight:800;font-size:14px;line-height:1}'
 +'.hpz-trust svg{color:#3ddc84}'
-+'.hpz-wiki-card{position:relative}'
++'.hpz-wiki-card,.hpz-article{position:relative}'
 +'.hpz-wiki-card>.hpz-trust{position:absolute;top:22px;right:22px}'
 +'.hpz-wiki-author{display:block;margin-top:6px;color:#B6C6D4;font-size:14px}'
 +'button.hpz-trust{border:1px solid rgba(61,220,132,.45);border-radius:999px;padding:6px 12px;background:rgba(61,220,132,.08);cursor:pointer;min-height:36px}'
 +'button.hpz-trust[aria-pressed="true"]{background:rgba(61,220,132,.22)}'
 +'.hpz-article__meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px}'
 +'.hpz-wiki-card[data-tier],.hpz-article[data-tier]{border-width:2px!important}'
-/* Ranking colors: bright borders, clearly different solid backgrounds */
-+t('gold')+'{background:#5E4B07!important;border-color:#FFC83D!important}'
-+t('silver')+'{background:#435260!important;border-color:#D9E2EA!important}'
-+t('bronze')+'{background:#5A2C12!important;border-color:#E8833A!important}'
++t('gold')+'{background-color:#5E4B07!important;border-color:#FFC83D!important}'
++t('silver')+'{background-color:#435260!important;border-color:#D9E2EA!important}'
++t('bronze')+'{background-color:#5A2C12!important;border-color:#E8833A!important}'
 +t('gold')+' p,'+t('silver')+' p,'+t('bronze')+' p,'+t('gold')+' small,'+t('silver')+' small,'+t('bronze')+' small,'+t('gold')+' .hpz-wiki-author,'+t('silver')+' .hpz-wiki-author,'+t('bronze')+' .hpz-wiki-author{color:#F2F7FB!important}'
-+t('gold')+' .hpz-status,'+t('silver')+' .hpz-status,'+t('bronze')+' .hpz-status{background:rgba(8,19,31,.7);border-color:rgba(255,255,255,.25)}';
++t('gold')+' .hpz-status,'+t('silver')+' .hpz-status,'+t('bronze')+' .hpz-status{background:rgba(8,19,31,.7);border-color:rgba(255,255,255,.25)}'
+/* Patterns: gold = diagonal stripes, silver = dot grid, bronze = crosshatch */
++c('gold')+'{background-image:repeating-linear-gradient(45deg,rgba(255,200,61,.16) 0 6px,transparent 6px 16px)!important}'
++c('silver')+'{background-image:radial-gradient(circle,rgba(255,255,255,.2) 1.6px,transparent 1.8px)!important;background-size:14px 14px!important}'
++c('bronze')+'{background-image:repeating-linear-gradient(45deg,rgba(232,131,58,.18) 0 2px,transparent 2px 12px),repeating-linear-gradient(-45deg,rgba(232,131,58,.18) 0 2px,transparent 2px 12px)!important}'
+/* Rank badge */
++t('gold')+'::after,'+t('silver')+'::after,'+t('bronze')+'::after{position:absolute;right:18px;bottom:16px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;pointer-events:none}'
++t('gold')+'::after{content:"\\1F947  Vàng";background:#FFC83D;color:#3a2c00}'
++t('silver')+'::after{content:"\\1F948  Bạc";background:#D9E2EA;color:#1f2a33}'
++t('bronze')+'::after{content:"\\1F949  Đồng";background:#E8833A;color:#2e1305}'
++'.hpz-article[data-tier]::after{top:20px;bottom:auto}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 function trustHtml(slug,tag){return '<'+tag+' class="hpz-trust" data-trust="'+slug+'" title="Số người tin tưởng Wiki này" aria-label="'+count(slug)+' người tin tưởng"'+(tag==='button'?' type="button" aria-pressed="'+(!!mine[slug])+'"':'')+'>'+ICON+'<b>'+count(slug)+'</b></'+tag+'>'}
 function enhance(){
