@@ -1,0 +1,64 @@
+/* HPZWiki minimal navy theme — loaded last, overrides styles.css and wiki.css */
+:root{
+  --hpz-bg:#08131F;--hpz-card:#122638;--hpz-border:#294457;
+  --hpz-text:#EAF2F8;--hpz-text-soft:#B6C6D4;--hpz-text-muted:#B6C6D4;
+  --hpz-cyan:#54C7E8;--hpz-cyan-2:#54C7E8;
+  --hpz-surface:#122638;--hpz-surface-2:#122638;--hpz-line:#294457;
+  --hpz-shadow:none;--hpz-shadow-strong:none
+}
+html,body,.hpz-app{background:#08131F;color:#EAF2F8}
+#aquarium-bg,#aquarium-bg canvas{display:none!important}
+.hpz-app:before{display:none}
+
+.hpz-header{background:#08131F;border-bottom:1px solid #294457;box-shadow:none;backdrop-filter:none}
+.hpz-header__nav a,.hpz-account-link,.hpz-icon-link,.hpz-more-nav summary{color:#B6C6D4!important}
+.hpz-header__nav a:hover,.hpz-header__nav a.active,.hpz-account-link:hover,.hpz-icon-link:hover,.hpz-more-nav summary:hover{color:#EAF2F8!important;background:#122638}
+.hpz-header__nav a.active{color:#54C7E8!important}
+.hpz-account-link{border-color:#294457}
+.hpz-brand__mark{border-color:#54C7E8;box-shadow:none;background:#122638}
+.hpz-brand b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#EAF2F8}
+.hpz-brand small{color:#B6C6D4}
+.hpz-more-nav__panel,.hpz-mobile-menu__panel{background:#122638;border-color:#294457;box-shadow:none;backdrop-filter:none}
+.hpz-more-nav__panel a,.hpz-mobile-menu__panel a{color:#B6C6D4!important}
+.hpz-more-nav__panel a:hover,.hpz-mobile-menu__panel a:hover,.hpz-mobile-menu__panel a.active{background:#08131F;color:#EAF2F8!important}
+
+/* Banner: the only place that keeps a soft blue gradient */
+.hpz-page-head{padding:28px 28px;margin-bottom:20px;border:1px solid #294457;border-radius:18px;background:linear-gradient(135deg,#123a56 0%,#0d2a40 55%,#08131F 100%)}
+.hpz-page-head h1{color:#EAF2F8}
+.hpz-page-head p{color:#B6C6D4}
+.hpz-eyebrow{color:#54C7E8}
+
+/* Solid cards and search panel */
+.hpz-card,.hpz-card--hero,.hpz-wiki-card{background:#122638!important;border:1px solid #294457!important;box-shadow:none!important;backdrop-filter:none!important;color:#EAF2F8}
+.hpz-wiki-card:hover{border-color:#54C7E8!important}
+.hpz-wiki-card h2,.hpz-article h1,.hpz-article h2,.hpz-article h3,.hpz-card-head h2{color:#EAF2F8}
+.hpz-wiki-card p,.hpz-article__lead,.hpz-article__body p,.hpz-related a{color:#B6C6D4}
+.hpz-wiki-card small,.hpz-article__meta small,.hpz-wiki-author,.hpz-muted{color:#B6C6D4}
+.hpz-article__body p{color:#EAF2F8}
+.hpz-note{color:#B6C6D4}
+.hpz-field>span{color:#B6C6D4}
+.hpz-field input,.hpz-field textarea{background:#08131F;border:1px solid #294457;color:#EAF2F8}
+.hpz-field input::placeholder,.hpz-field textarea::placeholder{color:#B6C6D4;opacity:.75}
+.hpz-field input:focus,.hpz-field textarea:focus{border-color:#54C7E8;box-shadow:0 0 0 3px rgba(84,199,232,.18)}
+
+/* Chips, status, buttons */
+.hpz-chip{background:#08131F;border:1px solid #294457;color:#B6C6D4}
+.hpz-chip:hover{color:#EAF2F8;border-color:#54C7E8}
+.hpz-chip[aria-pressed="true"]{background:#54C7E8;border-color:#54C7E8;color:#08131F}
+.hpz-chip small{color:inherit;opacity:.85}
+.hpz-status{background:#08131F;border:1px solid #294457;color:#54C7E8}
+.hpz-btn--primary{background:#54C7E8;color:#08131F!important;box-shadow:none}
+.hpz-btn--secondary{background:#122638;color:#EAF2F8!important;border-color:#294457}
+.hpz-btn--secondary:hover{border-color:#54C7E8}
+.hpz-empty{background:#122638;border:1px dashed #294457;color:#B6C6D4}
+.hpz-empty b{color:#EAF2F8}
+.hpz-related a{border-color:#294457;background:#08131F}
+.hpz-related a:hover{color:#54C7E8;border-color:#54C7E8}
+
+.hpz-footer{background:#08131F;border-top:1px solid #294457;backdrop-filter:none;color:#B6C6D4}
+.hpz-footer__business a,.hpz-footer__links a{color:#54C7E8}
+.hpz-bottom-nav{background:#08131F!important;border-top:1px solid #294457;box-shadow:none;backdrop-filter:none}
+.hpz-bottom-nav a{color:#B6C6D4!important}
+.hpz-bottom-nav a:active{background:#122638;color:#54C7E8!important}
+:focus-visible{outline-color:#54C7E8}
+@media(max-width:720px){.hpz-page-head{padding:20px 18px}}
