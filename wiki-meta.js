@@ -2,7 +2,7 @@
 'use strict';
 var DEFAULT_AUTHOR='HPZ Aquaroom';
 var AUTHORS={};
-/* Số liệu minh họa để xem các cấp viền. Thay bằng số thật khi có backend. */
+/* Số liệu minh họa để xem các cấp màu. Thay bằng số thật khi có backend. */
 var BASE={
   'benh-dom-trang':128,
   'thay-nuoc-dinh-ky':112,
@@ -30,10 +30,13 @@ var css='.hpz-trust{display:inline-flex;align-items:center;gap:6px;color:#3ddc84
 +'button.hpz-trust{border:1px solid rgba(61,220,132,.45);border-radius:999px;padding:6px 12px;background:rgba(61,220,132,.08);cursor:pointer;min-height:36px}'
 +'button.hpz-trust[aria-pressed="true"]{background:rgba(61,220,132,.22)}'
 +'.hpz-article__meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px}'
-+'.hpz-wiki-card[data-tier],.hpz-article[data-tier]{border-width:2px!important}'
-+'.hpz-wiki-card[data-tier="gold"],.hpz-article[data-tier="gold"]{border-color:#E7B93C!important}'
-+'.hpz-wiki-card[data-tier="silver"],.hpz-article[data-tier="silver"]{border-color:#C5CED6!important}'
-+'.hpz-wiki-card[data-tier="bronze"],.hpz-article[data-tier="bronze"]{border-color:#C07A45!important}';
+/* Tier colors: solid, muted card backgrounds so text stays easy to read */
++'.hpz-wiki-card[data-tier="gold"],.hpz-article[data-tier="gold"]{background:#2B2713!important;border-color:#6E5C1D!important}'
++'.hpz-wiki-card[data-tier="silver"],.hpz-article[data-tier="silver"]{background:#27333E!important;border-color:#5A6A78!important}'
++'.hpz-wiki-card[data-tier="bronze"],.hpz-article[data-tier="bronze"]{background:#2D2017!important;border-color:#7A4E2C!important}'
++'.hpz-wiki-card[data-tier="gold"]:hover{border-color:#E7B93C!important}'
++'.hpz-wiki-card[data-tier="silver"]:hover{border-color:#C5CED6!important}'
++'.hpz-wiki-card[data-tier="bronze"]:hover{border-color:#C07A45!important}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 function trustHtml(slug,tag){return '<'+tag+' class="hpz-trust" data-trust="'+slug+'" title="Số người tin tưởng Wiki này" aria-label="'+count(slug)+' người tin tưởng"'+(tag==='button'?' type="button" aria-pressed="'+(!!mine[slug])+'"':'')+'>'+ICON+'<b>'+count(slug)+'</b></'+tag+'>'}
 function enhance(){
