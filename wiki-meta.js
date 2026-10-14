@@ -22,6 +22,8 @@ function count(slug){return (BASE[slug]||0)+(mine[slug]?1:0)}
 function tier(n){return n>100?'gold':n>60?'silver':n>30?'bronze':''}
 function applyTier(el,slug){var t=tier(count(slug));if(t)el.setAttribute('data-tier',t);else el.removeAttribute('data-tier')}
 var ICON='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg>';
+var T='.hpz-wiki-card[data-tier="%"],.hpz-article[data-tier="%"]';
+function t(n){return T.replace(/%/g,n)}
 var css='.hpz-trust{display:inline-flex;align-items:center;gap:6px;color:#3ddc84;font-weight:800;font-size:14px;line-height:1}'
 +'.hpz-trust svg{color:#3ddc84}'
 +'.hpz-wiki-card{position:relative}'
@@ -30,13 +32,13 @@ var css='.hpz-trust{display:inline-flex;align-items:center;gap:6px;color:#3ddc84
 +'button.hpz-trust{border:1px solid rgba(61,220,132,.45);border-radius:999px;padding:6px 12px;background:rgba(61,220,132,.08);cursor:pointer;min-height:36px}'
 +'button.hpz-trust[aria-pressed="true"]{background:rgba(61,220,132,.22)}'
 +'.hpz-article__meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px}'
-/* Tier colors: solid, muted card backgrounds so text stays easy to read */
-+'.hpz-wiki-card[data-tier="gold"],.hpz-article[data-tier="gold"]{background:#2B2713!important;border-color:#6E5C1D!important}'
-+'.hpz-wiki-card[data-tier="silver"],.hpz-article[data-tier="silver"]{background:#27333E!important;border-color:#5A6A78!important}'
-+'.hpz-wiki-card[data-tier="bronze"],.hpz-article[data-tier="bronze"]{background:#2D2017!important;border-color:#7A4E2C!important}'
-+'.hpz-wiki-card[data-tier="gold"]:hover{border-color:#E7B93C!important}'
-+'.hpz-wiki-card[data-tier="silver"]:hover{border-color:#C5CED6!important}'
-+'.hpz-wiki-card[data-tier="bronze"]:hover{border-color:#C07A45!important}';
++'.hpz-wiki-card[data-tier],.hpz-article[data-tier]{border-width:2px!important}'
+/* Ranking colors: bright borders, clearly different solid backgrounds */
++t('gold')+'{background:#5E4B07!important;border-color:#FFC83D!important}'
++t('silver')+'{background:#435260!important;border-color:#D9E2EA!important}'
++t('bronze')+'{background:#5A2C12!important;border-color:#E8833A!important}'
++t('gold')+' p,'+t('silver')+' p,'+t('bronze')+' p,'+t('gold')+' small,'+t('silver')+' small,'+t('bronze')+' small,'+t('gold')+' .hpz-wiki-author,'+t('silver')+' .hpz-wiki-author,'+t('bronze')+' .hpz-wiki-author{color:#F2F7FB!important}'
++t('gold')+' .hpz-status,'+t('silver')+' .hpz-status,'+t('bronze')+' .hpz-status{background:rgba(8,19,31,.7);border-color:rgba(255,255,255,.25)}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 function trustHtml(slug,tag){return '<'+tag+' class="hpz-trust" data-trust="'+slug+'" title="Số người tin tưởng Wiki này" aria-label="'+count(slug)+' người tin tưởng"'+(tag==='button'?' type="button" aria-pressed="'+(!!mine[slug])+'"':'')+'>'+ICON+'<b>'+count(slug)+'</b></'+tag+'>'}
 function enhance(){
